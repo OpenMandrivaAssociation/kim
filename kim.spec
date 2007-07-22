@@ -1,6 +1,6 @@
 %define name	kim
-%define version	0.9.0
-%define release	%mkrel 2
+%define version	0.9.4
+%define release	%mkrel 1
 
 
 Name:		%{name}
@@ -9,7 +9,7 @@ Release:	%{release}
 Summary:	Image menu for kde
 License:	GPL
 Group:		Graphical desktop/KDE
-Source:		%{name}-%{version}.tar.bz2
+Source:		%{name}-%{version}.tar.gz
 URL:		http://bouveyron.free.fr/kim/
 Requires:	kdebase ImageMagick 
 BuildArch:	noarch
