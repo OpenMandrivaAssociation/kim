@@ -13,7 +13,6 @@ Source:		%{name}-%{version}.tar.gz
 URL:		http://bouveyron.free.fr/kim/
 Requires:	kdebase ImageMagick 
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 This is an image Kde servicemenu which allows to:
