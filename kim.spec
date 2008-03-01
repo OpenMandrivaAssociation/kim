@@ -1,6 +1,6 @@
 %define name	kim
 %define version	0.9.4
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 
 Name:		%{name}
@@ -11,7 +11,8 @@ License:	GPL
 Group:		Graphical desktop/KDE
 Source:		%{name}-%{version}.tar.gz
 URL:		http://bouveyron.free.fr/kim/
-Requires:	kdebase ImageMagick 
+Requires:	kdebase-progs 
+Requires:       ImageMagick 
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
