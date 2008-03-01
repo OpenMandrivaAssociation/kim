@@ -1,6 +1,6 @@
 %define name	kim
-%define version	0.9.4
-%define release	%mkrel 2
+%define version	0.9.5
+%define release	%mkrel 1
 
 
 Name:		%{name}
@@ -27,6 +27,14 @@ This is an image Kde servicemenu which allows to:
 - and more other actions !
 This servicemenu use ImageMagick.
 
+%files
+%defattr(-,root,root)
+%_datadir/apps/kim
+%{_datadir}/apps/konqueror/servicemenus/*
+%attr(0755,root,root) %{_bindir}/*
+
+#--------------------------------------------------------------------
+
 %prep
 rm -rf $RPM_BUILD_ROOT
 %setup -q -n %{name}
@@ -37,10 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p %buildroot/%_datadir/apps/konqueror/servicemenus/
 mkdir -p %buildroot/%_bindir
 
-chmod 644 src/kim*.desktop src/plugins/kim*.desktop
+chmod 644 src/kim*.desktop
 chmod 755 src/bin/kim*
 cp src/kim*.desktop %buildroot/%_datadir/apps/konqueror/servicemenus/
-cp src/plugins/kim*.desktop %buildroot/%_datadir/apps/konqueror/servicemenus/
 cp src/bin/kim* %buildroot/%_bindir
 
 mkdir -p %buildroot/%_datadir/apps/kim
@@ -54,11 +61,3 @@ perl -pi -e "s/\r\n/\n/"  work.css
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%files
-%defattr(-,root,root)
-%doc manual.html work.css
-%_datadir/apps/kim
-%{_datadir}/apps/konqueror/servicemenus/*
-%attr(0755,root,root) %{_bindir}/*
-
