@@ -1,6 +1,6 @@
 %define name	kim
 %define version	0.9.5
-%define release	%mkrel 1
+%define release	%mkrel 3
 
 
 Name:		%{name}
