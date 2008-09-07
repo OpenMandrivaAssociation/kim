@@ -1,7 +1,6 @@
 %define name	kim
 %define version	0.9.5
-%define release	%mkrel 3
-
+%define release	%mkrel 4
 
 Name:		%{name}
 Version:	%{version}
@@ -14,6 +13,7 @@ URL:		http://bouveyron.free.fr/kim/
 Requires:	kdebase-progs 
 Requires:       ImageMagick 
 BuildArch:	noarch
+BuildRequires:	kde3-macros
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
@@ -29,33 +29,33 @@ This servicemenu use ImageMagick.
 
 %files
 %defattr(-,root,root)
-%_datadir/apps/kim
-%{_datadir}/apps/konqueror/servicemenus/*
-%attr(0755,root,root) %{_bindir}/*
+%_kde3_datadir/apps/kim
+%{_kde3_datadir}/apps/konqueror/servicemenus/*
+%attr(0755,root,root) %{_kde3_bindir}/*
 
 #--------------------------------------------------------------------
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q -n %{name}
 
 %build
 
 %install 
-mkdir -p %buildroot/%_datadir/apps/konqueror/servicemenus/
-mkdir -p %buildroot/%_bindir
+rm -fr %buildroot
+mkdir -p %buildroot/%_kde3_datadir/apps/konqueror/servicemenus/
+mkdir -p %buildroot/%_kde3_bindir
 
 chmod 644 src/kim*.desktop
 chmod 755 src/bin/kim*
-cp src/kim*.desktop %buildroot/%_datadir/apps/konqueror/servicemenus/
-cp src/bin/kim* %buildroot/%_bindir
+cp src/kim*.desktop %buildroot/%_kde3_datadir/apps/konqueror/servicemenus/
+cp src/bin/kim* %buildroot/%_kde3_bindir
 
-mkdir -p %buildroot/%_datadir/apps/kim
-cp COPYING %buildroot/%_datadir/apps/kim/kim_about.txt
-mkdir -p %buildroot/%_datadir/apps/kim/slideshow/
-cp src/slideshow/* %buildroot/%_datadir/apps/kim/slideshow/
-mkdir -p %buildroot/%_datadir/apps/kim/galery
-cp src/galery/* %buildroot/%_datadir/apps/kim/galery
+mkdir -p %buildroot/%_kde3_datadir/apps/kim
+cp COPYING %buildroot/%_kde3_datadir/apps/kim/kim_about.txt
+mkdir -p %buildroot/%_kde3_datadir/apps/kim/slideshow/
+cp src/slideshow/* %buildroot/%_kde3_datadir/apps/kim/slideshow/
+mkdir -p %buildroot/%_kde3_datadir/apps/kim/galery
+cp src/galery/* %buildroot/%_kde3_datadir/apps/kim/galery
 
 perl -pi -e "s/\r\n/\n/"  work.css
 
