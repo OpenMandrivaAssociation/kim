@@ -11,7 +11,7 @@ Group:		Graphical desktop/KDE
 Source:		%{name}-%{version}.tar.gz
 URL:		http://bouveyron.free.fr/kim/
 Requires:	kdebase-progs 
-Requires:       ImageMagick 
+Requires:       imagemagick 
 BuildArch:	noarch
 BuildRequires:	kde3-macros
 BuildRoot:	%{_tmppath}/%{name}-buildroot
