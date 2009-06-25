@@ -31,7 +31,7 @@ This servicemenu use ImageMagick.
 %files
 %defattr(-,root,root)
 %_kde_datadir/apps/kim
-%buildroot/%_kde_datadir/kde4/services/*
+%_kde_datadir/kde4/services/*
 %attr(0755,root,root) %{_kde_bindir}/*
 
 #--------------------------------------------------------------------
@@ -43,12 +43,12 @@ This servicemenu use ImageMagick.
 
 %install 
 rm -fr %buildroot
-mkdir -p %buildroot/%_kde_datadir/kde4/services/
+mkdir -p %buildroot%_kde_datadir/kde4/services/
 mkdir -p %buildroot/%_kde_bindir
 
 chmod 644 src/kim*.desktop
 chmod 755 src/bin/kim*
-cp src/kim*.desktop %buildroot/%_kde_datadir/kde4/services/
+cp src/kim*.desktop %buildroot%_kde_datadir/kde4/services/
 cp src/bin/kim* %buildroot/%_kde_bindir
 
 mkdir -p %buildroot/%_kde_datadir/apps/kim
