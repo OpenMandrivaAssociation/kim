@@ -1,0 +1,65 @@
+--- src/kim_convertandrotate.desktop.orig	2009-02-10 11:14:08.000000000 +0200
++++ src/kim_convertandrotate.desktop		2010-01-12 01:30:29.283348825 +0200
+@@ -19,8 +19,7 @@
+ [Desktop Entry]
+ Type=Service
+ ServiceTypes=KonqPopupMenu/Plugin,image/*
+-Actions=JPEG;PNG;GIF;TIF;PDF;ConvCustom;_SEPARATOR_;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop
+-Encoding=UTF-8
++Actions=JPEG;PNG;GIF;TIF;PDF;ConvCustom;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop;
+ X-KDE-Submenu=Kim - Convert and Rotate
+ X-KDE-Submenu[fr]=Kim - Convertir et tourner
+ 
+@@ -75,31 +74,31 @@
+ [Desktop Action AutoRot];
+ Name=Auto-rotate with EXIF
+ Name[fr]=Rotation automatique (EXIF)
+-Icon=rotate_cw
++Icon=object-rotate-right
+ Exec=kim_rotate EXIF %U
+ 
+ [Desktop Action Rot90];
+ Name=Rotate (90°)
+ Name[fr]=Tourner de 90°
+-Icon=rotate_cw
++Icon=object-rotate-right
+ Exec=kim_rotate 90 %U
+ 
+ [Desktop Action Rot180]
+ Name=Rotate (180°)
+ Name[fr]=Tourner de 180°
+-Icon=rotate_cw
++Icon=object-rotate-right
+ Exec=kim_rotate 180 %U
+ 
+ [Desktop Action Rot270]
+ Name=Rotate (270°)
+ Name[fr]=Tourner de 270°
+-Icon=rotate_cw
++Icon=object-rotate-right
+ Exec=kim_rotate 270 %U
+ 
+ [Desktop Action RotCustom]
+ Name=Rotate custom...
+ Name[fr]=Rotation personnalisée
+-Icon=rotate_cw
++Icon=object-rotate-right
+ Exec=kim_rotate `kdialog --inputbox "Rotate x degrees:" 45` %U;
+ 
+ [Desktop Action Flip]
+@@ -108,7 +107,7 @@
+ Name[fr]=Verticalement
+ Name[hu]=Tükrözés vízszintesen
+ Name[de]=Vertikal spiegeln
+-Icon=2uparrow
++Icon=object-flip-vertical
+ Exec=kim_flipflop flip %U 
+ 
+ [Desktop Action Flop]
+@@ -117,5 +116,5 @@
+ Name[fr]=Horizontalement
+ Name[hu]=Tükrözés függőlegesen
+ Name[de]=Horizontal spiegeln
+-Icon=2rightarrow
++Icon=object-flip-horizontal
+ Exec=kim_flipflop flop %U 
