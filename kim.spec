@@ -73,7 +73,7 @@ perl -pi -e "s/\r\n/\n/"  manual/work.css
 
 #find_lang %{oname}
 
-%files -f %{oname}.lang
+%files
 %doc AUTHORS ChangeLog README manual
 %{_kf5_bindir}/kim*
 %{_kf5_services}/kim*.desktop
