@@ -1,7 +1,7 @@
 %define name	kim
 %define oname	kim4
-%define version	0.9.5
-%define release	8
+%define version	0.9.8
+%define release	1
 
 Name:		%{name}
 Version:	%{version}
@@ -9,15 +9,19 @@ Release:	%{release}
 Summary:	Image menu for kde
 License:	GPL
 Group:		Graphical desktop/KDE
-Source0:	%{oname}-%{version}.tar.gz
-Patch0:		kim4-0.9.5-fix-icons-compressandresize-desktop-file.patch
-Patch1:		kim4-0.9.5-fix-icons-converandrotate-desktop-file.patch
-Patch2:		kim4-0.9.5-fix-icons-pulication-desktop-file.patch
+Source0:	http://www.librepc.com/dl/kim/%{oname}-%{version}.tar.gz
 URL:		http://bouveyron.free.fr/kim/
-Requires:	kdebase4-runtime
-Requires:       imagemagick 
-BuildArch:	noarch
-BuildRequires:	kde4-macros
+
+BuildRequires:	cmake(ECM)
+
+Requires:	plasma-workspace
+Requires:	imagemagick
+Requires:	xwd
+Requires:	xwininfo
+Requires:	tesseract
+Requires:	unpaper
+Requires:	kdialog
+
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
@@ -41,32 +45,39 @@ This servicemenu use ImageMagick.
 
 %prep
 %setup -q -n %{oname}
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
 %build
 
 %install 
-rm -fr %{buildroot}
-mkdir -p %{buildroot}%{_kde_datadir}/kde4/services/
-mkdir -p %{buildroot}/%{_kde_bindir}
+mkdir -p %{buildroot}%{_kf5_bindir}
+mkdir -p %{buildroot}%{_kf5_services}
+mkdir -p %{buildroot}%{_kf5_appsdir}/%{name}/slideshow
+mkdir -p %{buildroot}%{_kf5_appsdir}/%{name}/gallery
 
-chmod 644 src/kim*.desktop
-chmod 755 src/bin/kim*
-cp src/kim*.desktop %{buildroot}%{_kde_datadir}/kde4/services/
-cp src/bin/kim* %{buildroot}/%{_kde_bindir}
+install -m 644 src/kim*.desktop %{buildroot}%{_kf5_services}/
+install -m 755 src/bin/kim* %{buildroot}%{_kf5_bindir}/
 
-mkdir -p %{buildroot}/%{_kde_datadir}/apps/kim
-cp COPYING %{buildroot}/%{_kde_datadir}/apps/kim/kim_about.txt
-mkdir -p %{buildroot}/%{_kde_datadir}/apps/kim/slideshow/
-cp src/slideshow/* %{buildroot}/%{_kde_datadir}/apps/kim/slideshow/
-mkdir -p %{buildroot}/%{_kde_datadir}/apps/kim/gallery
-cp src/gallery/* %{buildroot}/%{_kde_datadir}/apps/kim/gallery
+install -m 644 src/slideshow/* %{buildroot}%{_kf5_appsdir}/%{name}/slideshow/
+install -m 644 src/gallery/* %{buildroot}%{_kf5_appsdir}/%{name}/gallery/
 
-perl -pi -e "s/\r\n/\n/"  work.css
+perl -pi -e "s/\r\n/\n/"  manual/work.css
 
-%clean
-rm -rf %{buildroot}
+# translations files for kim4
+pushd language/locale
+for locale in de fr;
+do
+	mkdir -p %{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES
+	install -m 644 $locale/%{oname}.mo \
+	"%{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES/"
+done
+popd
+
+%find_lang %{oname}
+
+%files -f %{oname}.lang
+%doc AUTHORS ChangeLog README manual
+%{_kf5_bindir}/kim*
+%{_kf5_services}/kim*.desktop
+%{_kf5_appsdir}/%{name}/
 
 
 %changelog
