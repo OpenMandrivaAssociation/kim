@@ -44,7 +44,7 @@ This servicemenu use ImageMagick.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %{oname}
+%setup -q -n %{oname}-%{version}
 %build
 
 %install 
