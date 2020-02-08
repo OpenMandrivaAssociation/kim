@@ -62,14 +62,14 @@ install -m 644 src/gallery/* %{buildroot}%{_kf5_appsdir}/%{name}/gallery/
 perl -pi -e "s/\r\n/\n/"  manual/work.css
 
 # translations files for kim4
-pushd language/locale
-for locale in de fr;
-do
-	mkdir -p %{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES
-	install -m 644 $locale/%{oname}.mo \
-	"%{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES/"
-done
-popd
+#pushd language/locale
+#for locale in de fr;
+#do
+#	mkdir -p %{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES
+#	install -m 644 $locale/%{oname}.mo \
+#	"%{buildroot}%{_datadir}/locale/$locale/LC_MESSAGES/"
+#done
+#popd
 
 %find_lang %{oname}
 
