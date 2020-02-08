@@ -71,7 +71,7 @@ perl -pi -e "s/\r\n/\n/"  manual/work.css
 #done
 #popd
 
-%find_lang %{oname}
+#find_lang %{oname}
 
 %files -f %{oname}.lang
 %doc AUTHORS ChangeLog README manual
