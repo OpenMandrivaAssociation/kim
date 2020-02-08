@@ -75,9 +75,9 @@ perl -pi -e "s/\r\n/\n/"  manual/work.css
 
 %files
 %doc AUTHORS ChangeLog README manual
-%{_kf5_bindir}/kim*
-%{_kf5_services}/kim*.desktop
-%{_kf5_appsdir}/%{name}/
+#{_kf5_bindir}/kim*
+#{_kf5_services}/kim*.desktop
+#{_kf5_appsdir}/%{name}/
 
 
 %changelog
