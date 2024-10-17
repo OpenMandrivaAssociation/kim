@@ -10,7 +10,7 @@ Summary:	Image menu for kde
 License:	GPL
 Group:		Graphical desktop/KDE
 Source0:	http://www.librepc.com/dl/kim/%{oname}-%{version}.tar.gz
-URL:		http://bouveyron.free.fr/kim/
+URL:		https://bouveyron.free.fr/kim/
 
 BuildRequires:	cmake(ECM)
 
